@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+uploads/*
+!uploads/.gitkeep
+data/amc.json.tmp
+data/amc.seed.backup.json
+scratch_*.py
+.DS_Store
+
+# ADK local session store
+.adk/
+civic_agent/.adk/

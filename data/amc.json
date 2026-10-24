@@ -1,0 +1,269 @@
+{
+  "_note": "MOCK AMC system for hackathon demo. Ward IDs, centroids (approximate) and department handles are illustrative, not official.",
+  "city": {
+    "name": "Ahmedabad",
+    "corporation": "Ahmedabad Municipal Corporation",
+    "x_handle": "@AmdavadAMC",
+    "bounds": {
+      "sw": [
+        22.9,
+        72.45
+      ],
+      "ne": [
+        23.15,
+        72.72
+      ]
+    }
+  },
+  "wards": [
+    {
+      "id": "W12",
+      "name": "Navrangpura",
+      "zone": "West",
+      "centroid": [
+        23.0365,
+        72.5611
+      ],
+      "areas": [
+        "Navrangpura",
+        "Stadium",
+        "CG Road",
+        "Commerce Six Roads",
+        "Gujarat University",
+        "Swastik Char Rasta"
+      ]
+    },
+    {
+      "id": "W27",
+      "name": "Maninagar",
+      "zone": "South",
+      "centroid": [
+        22.9962,
+        72.603
+      ],
+      "areas": [
+        "Maninagar",
+        "Kankaria",
+        "Jawahar Chowk",
+        "Mani Nagar",
+        "Kankaria Lake",
+        "Rambaug"
+      ]
+    },
+    {
+      "id": "W08",
+      "name": "Bodakdev",
+      "zone": "North West",
+      "centroid": [
+        23.0396,
+        72.507
+      ],
+      "areas": [
+        "Bodakdev",
+        "Judges Bungalow Road",
+        "Sindhu Bhavan Road",
+        "Thaltej",
+        "Drive In Road"
+      ]
+    },
+    {
+      "id": "W15",
+      "name": "Jodhpur",
+      "zone": "South West",
+      "centroid": [
+        23.0258,
+        72.5244
+      ],
+      "areas": [
+        "Jodhpur",
+        "Satellite",
+        "Shivranjani",
+        "Jodhpur Char Rasta",
+        "Ramdev Nagar",
+        "Prahlad Nagar"
+      ]
+    },
+    {
+      "id": "W18",
+      "name": "Paldi",
+      "zone": "West",
+      "centroid": [
+        23.0115,
+        72.5626
+      ],
+      "areas": [
+        "Paldi",
+        "Ellisbridge",
+        "Vasna Road",
+        "Narayan Nagar",
+        "Sardar Patel Colony"
+      ]
+    },
+    {
+      "id": "W03",
+      "name": "Chandkheda",
+      "zone": "North West",
+      "centroid": [
+        23.1094,
+        72.5862
+      ],
+      "areas": [
+        "Chandkheda",
+        "Motera",
+        "IOC Road",
+        "Visat"
+      ]
+    },
+    {
+      "id": "W33",
+      "name": "Naroda",
+      "zone": "North",
+      "centroid": [
+        23.07,
+        72.665
+      ],
+      "areas": [
+        "Naroda",
+        "Naroda Patiya",
+        "Krishnanagar",
+        "Naroda GIDC"
+      ]
+    },
+    {
+      "id": "W41",
+      "name": "Vastral",
+      "zone": "East",
+      "centroid": [
+        23.001,
+        72.6567
+      ],
+      "areas": [
+        "Vastral",
+        "Ramol",
+        "Vastral Gam",
+        "Ring Road Vastral"
+      ]
+    },
+    {
+      "id": "W21",
+      "name": "Khadia",
+      "zone": "Central",
+      "centroid": [
+        23.0225,
+        72.588
+      ],
+      "areas": [
+        "Khadia",
+        "Raipur",
+        "Astodia",
+        "Manek Chowk",
+        "Old City",
+        "Teen Darwaja"
+      ]
+    }
+  ],
+  "departments": {
+    "pothole": {
+      "name": "Roads & Buildings",
+      "sla_hours": 72,
+      "x_handle": "@AMC_Roads_mock"
+    },
+    "garbage": {
+      "name": "Solid Waste Management",
+      "sla_hours": 24,
+      "x_handle": "@AMC_SWM_mock"
+    },
+    "streetlight": {
+      "name": "Light Department",
+      "sla_hours": 48,
+      "x_handle": "@AMC_Light_mock"
+    },
+    "waterlogging": {
+      "name": "Storm Water Drainage",
+      "sla_hours": 12,
+      "x_handle": "@AMC_SWD_mock"
+    },
+    "other": {
+      "name": "Ward Office (General)",
+      "sla_hours": 96,
+      "x_handle": "@AMC_Ward_mock"
+    }
+  },
+  "zone_officers": {
+    "West": "Deputy Commissioner, West Zone (mock)",
+    "South": "Deputy Commissioner, South Zone (mock)",
+    "North West": "Deputy Commissioner, North West Zone (mock)",
+    "South West": "Deputy Commissioner, South West Zone (mock)",
+    "North": "Deputy Commissioner, North Zone (mock)",
+    "East": "Deputy Commissioner, East Zone (mock)",
+    "Central": "Deputy Commissioner, Central Zone (mock)"
+  },
+  "sequence": 124,
+  "complaints": [
+    {
+      "trackingId": "AMC-2026-000123",
+      "ward": "W12",
+      "zone": "West",
+      "issue": "pothole",
+      "department": "Roads & Buildings",
+      "severity": 3,
+      "priority": "Medium",
+      "supporters": 1,
+      "description": "Pothole near Stadium Circle",
+      "address": "Stadium Circle, Navrangpura, Ahmedabad",
+      "lat": 23.0393,
+      "lng": 72.5636,
+      "imageId": null,
+      "status": "Assigned",
+      "filedAt": "2026-10-24T17:20:00+05:30",
+      "expectedBy": "2026-10-27T17:20:00+05:30",
+      "history": [
+        {
+          "status": "Filed",
+          "at": "2026-10-24T17:20:00+05:30",
+          "note": "Filed via citizen app"
+        },
+        {
+          "status": "Assigned",
+          "at": "2026-10-24T18:05:00+05:30",
+          "note": "Assigned to Roads & Buildings, West Zone"
+        }
+      ]
+    },
+    {
+      "trackingId": "AMC-2026-000098",
+      "ward": "W27",
+      "zone": "South",
+      "issue": "garbage",
+      "department": "Solid Waste Management",
+      "severity": 4,
+      "priority": "High",
+      "supporters": 3,
+      "description": "Garbage pile near Kankaria gate",
+      "address": "Kankaria Lake Gate 1, Maninagar, Ahmedabad",
+      "lat": 23.0063,
+      "lng": 72.6013,
+      "imageId": null,
+      "status": "In Progress",
+      "filedAt": "2026-10-20T09:10:00+05:30",
+      "expectedBy": "2026-10-21T09:10:00+05:30",
+      "history": [
+        {
+          "status": "Filed",
+          "at": "2026-10-20T09:10:00+05:30",
+          "note": "Filed via citizen app"
+        },
+        {
+          "status": "Assigned",
+          "at": "2026-10-20T11:00:00+05:30",
+          "note": "Assigned to SWM, South Zone"
+        },
+        {
+          "status": "In Progress",
+          "at": "2026-10-21T08:30:00+05:30",
+          "note": "Vehicle dispatched"
+        }
+      ]
+    }
+  ]
+}

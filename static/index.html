@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Nagrik — civic complaints, Ahmedabad</title>
+    <meta
+      name="description"
+      content="Photograph a pothole, garbage, a broken streetlight or waterlogging. Nagrik files the complaint with AMC and tracks it."
+    />
+    <meta name="theme-color" content="#eef1f4" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anek+Gujarati:wdth,wght@75..125,400..800&family=Mukta+Vaani:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <span class="brand">Nagrik<span class="gu" lang="gu">નાગરિક</span></span>
+      <span class="topbar-spacer"></span>
+      <div class="lang-switch" role="group" aria-label="Reply language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="gu" aria-pressed="false" lang="gu">ગુ</button>
+        <button type="button" data-lang="hi" aria-pressed="false" lang="hi">हि</button>
+      </div>
+      <span class="topbar-note">
+        Mock AMC system · <a href="/officer.html">Officer view</a>
+      </span>
+    </header>
+
+    <div class="layout">
+      <main class="shell">
+        <!-- Screen A: start -->
+        <section class="intro" id="intro">
+          <h1>See a pothole, garbage, a dead streetlight or waterlogging?</h1>
+          <p>Photograph it. I'll file it with AMC and keep track of it for you.</p>
+
+          <label class="camera-btn" id="camera-label">
+            <span class="material-symbols-rounded" aria-hidden="true">photo_camera</span>
+            Photograph the problem
+            <input
+              type="file"
+              id="camera-input"
+              accept="image/*"
+              capture="environment"
+            />
+          </label>
+          <button type="button" class="text-btn" id="gallery-btn">Choose from gallery</button>
+          <input type="file" id="gallery-input" accept="image/*" class="visually-hidden" />
+
+          <div class="lookup">
+            <label for="lookup-id">Already filed?</label>
+            <div class="lookup-row">
+              <input
+                type="text"
+                id="lookup-id"
+                placeholder="AMC-2026-000124"
+                inputmode="numeric"
+                autocomplete="off"
+                spellcheck="false"
+              />
+              <button type="button" class="btn-outline" id="lookup-btn">Check</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Screens B–E render here -->
+        <div class="thread" id="thread" aria-live="polite" aria-relevant="additions"></div>
+
+        <details class="trace-drawer" id="trace-drawer" hidden>
+          <summary>How I filed this</summary>
+          <div class="trace-log" id="trace-log-mobile"></div>
+        </details>
+
+        <p class="footnote">
+          Demo on a mock AMC system. Nothing is sent to the real portal.
+        </p>
+      </main>
+
+      <!-- Desktop: live agent trace -->
+      <aside class="trace" id="trace" aria-label="Agent route and tool calls">
+        <h2>Agent route</h2>
+        <div class="trace-panel">
+          <ol class="route" id="trace-route"></ol>
+          <p class="trace-empty" id="trace-empty">
+            Every step the agent takes shows up here — the tool it called, what it sent and
+            what came back.
+          </p>
+          <div class="trace-log" id="trace-log"></div>
+        </div>
+      </aside>
+    </div>
+
+    <form class="composer" id="composer">
+      <div class="quick" id="quick"></div>
+      <div class="composer-inner">
+        <label class="icon-btn secondary" title="Add a photo" id="composer-camera">
+          <span class="material-symbols-rounded" aria-hidden="true">photo_camera</span>
+          <span class="visually-hidden">Add a photo</span>
+          <input type="file" id="composer-input" accept="image/*" capture="environment" class="visually-hidden" />
+        </label>
+        <label class="visually-hidden" for="message">Type a message</label>
+        <textarea
+          id="message"
+          rows="1"
+          placeholder="Type a message…"
+          autocomplete="off"
+        ></textarea>
+        <button type="submit" class="icon-btn" id="send" aria-label="Send">
+          <span class="material-symbols-rounded" aria-hidden="true">send</span>
+        </button>
+      </div>
+    </form>
+
+    <script src="/js/app.js" type="module"></script>
+  </body>
+</html>

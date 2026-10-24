@@ -1,0 +1,9 @@
+google-adk>=1.0.0
+google-genai>=1.0.0
+fastapi
+uvicorn[standard]
+pillow
+httpx
+python-multipart
+rapidfuzz
+google-cloud-firestore

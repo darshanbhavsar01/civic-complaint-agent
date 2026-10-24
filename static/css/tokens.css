@@ -1,0 +1,92 @@
+/* Nagrik design tokens — design.md §2 */
+
+:root {
+  /* Colour */
+  --paper: #eef1f4;
+  --sheet: #ffffff;
+  --ink: #1c2541;
+  --indigo: #2b3a8c;
+  --marking: #f2b705;
+  --marking-press: #d49f04;
+  --stamp-red: #c2362b;
+  --stamp-blue: #2b3a8c;
+  --stamp-green: #2e7d4f;
+  --muted: #5b6475;
+  --rule: #d3d9e1;
+
+  /* Severity */
+  --sev-low: #5b6475;
+  --sev-mid: #b7791f;
+  --sev-high: #c2362b;
+  --sev-max: #8e1b12;
+
+  /* Space — 4px grid */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s6: 24px;
+  --s8: 32px;
+  --s12: 48px;
+  --gutter: 16px;
+
+  /* Shape */
+  --r-bubble: 16px;
+  --r-btn: 12px;
+  --r-slip: 4px;
+  --r-pill: 999px;
+
+  /* The one elevation: the slip */
+  --lift: 0 1px 0 var(--rule), 0 8px 24px rgba(28, 37, 65, 0.12);
+
+  /* Type */
+  --font-display: "Anek Gujarati", "Noto Sans Gujarati", system-ui, sans-serif;
+  --font-body: "Mukta Vaani", "Noto Sans Gujarati", system-ui, -apple-system, sans-serif;
+
+  --t13: 13px;
+  --t15: 15px;
+  --t18: 18px;
+  --t22: 22px;
+  --t28: 28px;
+  --t36: 36px;
+
+  /* Motion */
+  --stamp-ease: cubic-bezier(0.2, 0.9, 0.3, 1.3);
+}
+
+/* Optional dark mode: stamps keep their hue, lightness raised. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10162b;
+    --sheet: #1a2240;
+    --ink: #e8ecf4;
+    --indigo: #9aa8f0;
+    --muted: #9aa3b8;
+    --rule: #2c3658;
+    --stamp-red: #e05a4d;
+    --stamp-blue: #8c9cf2;
+    --stamp-green: #4fb37a;
+    --sev-low: #9aa3b8;
+    --sev-mid: #d9a33c;
+    --sev-high: #e05a4d;
+    --sev-max: #c8473a;
+    --lift: 0 1px 0 var(--rule), 0 8px 24px rgba(0, 0, 0, 0.45);
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #10162b;
+  --sheet: #1a2240;
+  --ink: #e8ecf4;
+  --indigo: #9aa8f0;
+  --muted: #9aa3b8;
+  --rule: #2c3658;
+  --stamp-red: #e05a4d;
+  --stamp-blue: #8c9cf2;
+  --stamp-green: #4fb37a;
+  --sev-low: #9aa3b8;
+  --sev-mid: #d9a33c;
+  --sev-high: #e05a4d;
+  --sev-max: #c8473a;
+  --lift: 0 1px 0 var(--rule), 0 8px 24px rgba(0, 0, 0, 0.45);
+}

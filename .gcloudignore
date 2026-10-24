@@ -1,0 +1,44 @@
+# Keep the build context small and secret-free.
+# NOTE: this project is not a git repo, so gcloud would otherwise upload
+# everything here, including .venv and .env.
+
+.gcloudignore
+.git/
+.gitignore
+
+# Secrets never go in the image - keys are passed with --set-env-vars.
+.env
+.env.*
+!.env.example
+
+# Local virtualenv and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ADK local session store
+.adk/
+civic_agent/.adk/
+
+# Local scratch and backups
+scratch_*
+*.tmp
+data/*.tmp
+data/amc.json.tmp
+data/amc.seed.backup.json
+
+# Local uploads are ephemeral on Cloud Run anyway
+uploads/*
+!uploads/.gitkeep
+
+# Demo source photos are not needed by the service
+demo/*.jpg
+demo/*.jpeg
+demo/*.png
+
+.DS_Store

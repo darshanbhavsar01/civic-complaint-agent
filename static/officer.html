@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mock AMC officer console — Nagrik</title>
+    <meta name="theme-color" content="#eef1f4" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anek+Gujarati:wdth,wght@75..125,400..800&family=Mukta+Vaani:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+    <style>
+      /* Internal tool: deliberately plainer than the citizen app. */
+      .console {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: var(--s6) var(--gutter) var(--s12);
+      }
+
+      .console-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: var(--s4);
+        margin-bottom: var(--s4);
+      }
+
+      .console-head h1 {
+        font-size: var(--t22);
+      }
+
+      .console-head .spacer {
+        flex: 1;
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--s3);
+        align-items: center;
+        font-size: var(--t13);
+        color: var(--muted);
+      }
+
+      .filters select {
+        min-height: 40px;
+        padding: 0 var(--s2);
+        background: var(--sheet);
+        border: 1px solid var(--rule);
+        border-radius: var(--r-slip);
+      }
+
+      .counts {
+        font-size: var(--t13);
+        color: var(--muted);
+      }
+
+      .counts strong {
+        color: var(--stamp-red);
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        background: var(--sheet);
+        border: 1px solid var(--rule);
+        border-radius: var(--r-slip);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--t13);
+        min-width: 860px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: var(--s3);
+        border-bottom: 1px solid var(--rule);
+        vertical-align: middle;
+      }
+
+      th {
+        font-weight: 600;
+        color: var(--muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: 0;
+      }
+
+      tbody tr[data-overdue="true"] td:first-child {
+        box-shadow: inset 3px 0 0 var(--stamp-red);
+      }
+
+      .tid {
+        font-family: var(--font-display);
+        font-variation-settings: "wdth" 100;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+
+      .num {
+        font-variant-numeric: tabular-nums;
+        text-align: right;
+      }
+
+      .addr {
+        color: var(--muted);
+        max-width: 24ch;
+      }
+
+      .overdue-flag {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        color: var(--stamp-red);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .overdue-flag .material-symbols-rounded {
+        font-size: 16px;
+      }
+
+      td select {
+        min-height: 40px;
+        padding: 0 var(--s2);
+        background: var(--paper);
+        border: 1px solid var(--rule);
+        border-radius: var(--r-slip);
+      }
+
+      .note-input {
+        min-height: 40px;
+        width: 100%;
+        min-width: 140px;
+        padding: 0 var(--s2);
+        background: var(--paper);
+        border: 1px solid var(--rule);
+        border-radius: var(--r-slip);
+      }
+
+      .empty {
+        padding: var(--s8);
+        text-align: center;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <span class="brand">Nagrik<span class="gu">officer</span></span>
+      <span class="topbar-spacer"></span>
+      <span class="topbar-note">Mock AMC system · <a href="/">Citizen app</a></span>
+    </header>
+
+    <main class="console">
+      <div class="console-head">
+        <h1>Mock AMC officer console</h1>
+        <span class="spacer"></span>
+        <div class="filters">
+          <label>
+            Ward
+            <select id="ward-filter"><option value="">All</option></select>
+          </label>
+          <label>
+            Status
+            <select id="status-filter"><option value="">All</option></select>
+          </label>
+        </div>
+      </div>
+
+      <p class="counts" id="counts" aria-live="polite"></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Tracking ID</th>
+              <th scope="col">Ward</th>
+              <th scope="col">Issue</th>
+              <th scope="col" class="num">Sev</th>
+              <th scope="col" class="num">+1s</th>
+              <th scope="col">Expected by</th>
+              <th scope="col">Status</th>
+              <th scope="col">Note</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+
+      <p class="footnote">
+        Mock console for the demo. Status changes are written to the same store the citizen
+        agent reads, so "what's the status?" answers with whatever you set here.
+        Auto-refreshes every 5 seconds.
+      </p>
+    </main>
+
+    <script src="/js/officer.js" type="module"></script>
+  </body>
+</html>
