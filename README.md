@@ -132,38 +132,34 @@ panel is the evidence that the agent reasons, uses tools and takes action.
 
 ---
 
-## Live deployment
+## Event deployment (decommissioned)
 
-**https://nagrik-229692962627.asia-south1.run.app** — citizen app
-**https://nagrik-229692962627.asia-south1.run.app/officer.html** — officer console
+Nagrik ran on Cloud Run during the event. The service has since been taken down to keep cost at zero; the table records how it was configured, and
+[Deploying from scratch](#deploying-from-scratch) recreates it.
 
 | | |
 |---|---|
-| Project | `main-aura-398409` |
 | Region | `asia-south1` (Mumbai — ~30ms from Ahmedabad instead of ~250ms) |
 | Service | `nagrik`, revision `nagrik-00003-mx6` |
 | Store | Firestore native, default database, `asia-south1` |
 | Scaling | min 0 / max 2, 512Mi, 1 cpu, concurrency 20 |
 | Budget alert | ₹50, scoped to this project, alerts at 50 / 90 / 100% |
 
-Cloud Run also serves the legacy-style URL `https://nagrik-k2ueldoewq-el.a.run.app`;
-both work.
-
-Useful commands:
+Useful commands once deployed (set `PROJECT_ID` to your GCP project):
 
 ```bash
 # redeploy after a code change
-gcloud run deploy nagrik --source . --project main-aura-398409 --region asia-south1
+gcloud run deploy nagrik --source . --project $PROJECT_ID --region asia-south1
 
 # logs
-gcloud run services logs tail nagrik --project main-aura-398409 --region asia-south1
+gcloud run services logs tail nagrik --project $PROJECT_ID --region asia-south1
 
 # flip on the canned-vision safety net if quota dies during judging
-gcloud run services update nagrik --project main-aura-398409 --region asia-south1 \
+gcloud run services update nagrik --project $PROJECT_ID --region asia-south1 \
   --update-env-vars DEMO_CACHE=1
 
 # add the Maps keys once you have them
-gcloud run services update nagrik --project main-aura-398409 --region asia-south1 \
+gcloud run services update nagrik --project $PROJECT_ID --region asia-south1 \
   --update-env-vars MAPS_SERVER_KEY=...,MAPS_EMBED_KEY=...
 ```
 
